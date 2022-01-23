@@ -6,9 +6,9 @@ Built using .NET
 Old UI project is live [here](https://tax-calculator-ui.azurewebsites.net/).
 API project is in progress.
 
-The application builds off work from a [coding assignment](https://github.com/Chris-Filiatrault/coding-assignment), the result of which produced a console application for calculating tax.
+The application builds off work from a [coding assignment](https://github.com/Chris-Filiatrault/coding-assignment), the result of which initially produced a console application for calculating tax, then later I added the UI.
 
-This project is purely for learning purposes. The idea is the business problem (an application for calculating tax) and the business logic is well understood, so I can progressively add more features and focus purely on the technical aspect.
+This project is purely for learning purposes. The idea is the business problem (calculating tax) and the business logic is well understood, so I can progressively add more features and focus purely on the technical aspect.
 
 To date the project covers topics including:
 
