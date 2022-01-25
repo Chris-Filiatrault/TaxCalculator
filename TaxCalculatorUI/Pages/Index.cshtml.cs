@@ -4,7 +4,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using TaxCalculatorUI.Clients;
 using TaxCalculatorUI.Models;
 
 
@@ -23,7 +25,7 @@ namespace TaxCalculatorUI.Pages
         }
 
         // Capture input from the form
-        public IActionResult OnPost()
+        public IActionResult OnPost([FromServices] TaxCalculatorApiClient client)
         {
             // if there's an issue with the values returned (required fields not filled out etc)
             // TODO - add logic for validation
@@ -33,8 +35,9 @@ namespace TaxCalculatorUI.Pages
             }
             else
             {
+                TempData["result"] = client.CallTaxCalculatorApi(ValuesObject.TotalPackage);
 
-                // Perform calculations
+                // TODO: Handle in API
                 ValuesObject.Superannuation = Calculations.CalculateSuperannuation(ValuesObject.TotalPackage);
                 ValuesObject.TaxableIncome = Calculations.CalculateTaxableIncome(ValuesObject.TotalPackage, ValuesObject.Superannuation);
                 ValuesObject.DeductionTaxableIncome = Math.Floor(ValuesObject.TaxableIncome);

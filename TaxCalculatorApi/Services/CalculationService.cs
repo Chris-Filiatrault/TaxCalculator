@@ -15,7 +15,7 @@ namespace TaxCalculatorApi.Services
             CalculationResult calculationResult = new();
 
             calculationResult.TotalPackage = income;
-            return calculationResult.TotalPackage;
+            return calculationResult.TotalPackage * 3;
 
         }
     }

@@ -10,7 +10,7 @@ namespace TaxCalculatorUI.Models
     public class Values
     {
         [Required]
-        public double TotalPackage { get; set; }
+        public int TotalPackage { get; set; }
 
         [Required]
         public char PayFrequency { get; set; }

@@ -13,20 +13,19 @@
 
 
 <form method="post">
-
     <br />
-    <h5>Enter Total Package (inc Superannuation)</h5>
+    <h5>Enter a number, which the API will multiply by 3:</h5>
     <input type="text" asp-for="ValuesObject.TotalPackage" />
     <br />
     <span style="color:red" asp-validation-for="ValuesObject.TotalPackage"></span>
 
-    <br />
+    @*<br />
     <h5>Enter Pay Frequency (w, f, m)</h5>
     <input type="text" asp-for="ValuesObject.PayFrequency" />
     <br />
     <span style="color:red" asp-validation-for="ValuesObject.PayFrequency"></span>
+    <br />*@
 
-    <br />
     <br />
 
     <button type="submit">Calculate</button>

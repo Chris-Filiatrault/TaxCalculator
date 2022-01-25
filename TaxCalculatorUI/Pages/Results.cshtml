@@ -3,10 +3,17 @@
 @{
 }
 
-<h1>Results</h1>
-
+<br />
+<h3>Results</h3>
+<br />
+<p>
+    Results from the Api is: <strong>@TempData["result"]</strong>
+</p>
 <table style="width:15%">
+
+    @*<tr>
     <tr>
+    </tr>
         <td>Total Package</td>
         <td>@Model.TotalPackage</td>
     </tr>
@@ -33,21 +40,21 @@
     <tr>
         <td>Budget Repair Levy</td>
         <td>@Model.BudgetRepairLevy</td>
-    </tr>    
+    </tr>
     <tr>
         <td>Income Tax</td>
         <td>@Model.IncomeTax</td>
-    </tr>    
+    </tr>
     <tr>
         <td>Deductions</td>
         <td>@Model.Deductions</td>
-    </tr>    
+    </tr>
     <tr>
         <td>Net Income</td>
         <td>@Model.NetIncome</td>
-    </tr>    
+    </tr>
     <tr>
         <td>Pay Packet</td>
         <td>@Model.PayPacket</td>
-    </tr>
+    </tr>*@
 </table>
