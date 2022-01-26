@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.Web;
-
-namespace TaxCalculatorUI.Models
+﻿namespace TaxCalculatorApi.Models
 {
-    public class Values
+    public class CalculationResultDto
     {
-        [Required]
-        public int TotalPackage { get; set; }
-
-        [Required]
-        public char PayFrequency { get; set; }
-
+        public double TotalPackage { get; set; }
+        public double PayFrequency { get; set; }
         public double Superannuation { get; set; }
         public double TaxableIncome { get; set; }
         public double DeductionTaxableIncome { get; set; }

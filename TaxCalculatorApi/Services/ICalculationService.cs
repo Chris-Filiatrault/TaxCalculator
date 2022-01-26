@@ -4,6 +4,6 @@ namespace TaxCalculatorApi.Services
 {
     public interface ICalculationService
     {
-        double CalculateTax(double income);
+        CalculationResultDto CalculateTax(int income);
     }
 }

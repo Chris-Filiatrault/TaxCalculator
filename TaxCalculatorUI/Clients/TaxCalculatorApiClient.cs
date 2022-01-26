@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using TaxCalculatorUI.Models;
+using Newtonsoft.Json;
 
 namespace TaxCalculatorUI.Clients
 {
@@ -27,27 +25,20 @@ namespace TaxCalculatorUI.Clients
             this.logger = logger;
         }
 
-        public string CallTaxCalculatorApi(int number)
+        // TODO: Make API call async
+        public ResultDto CallTaxCalculatorApi(double totalPackage)
         {
             var baseUrl = configuration.GetSection("TaxCalculatorApiUrl").Value;
 
-            var requestString = baseUrl + $"?income={number}";
+            var requestString = baseUrl + $"?income={totalPackage}";
             
-            var response = client.GetAsync(requestString).Result;
+            var httpResponse = client.GetAsync(requestString).Result;
 
-            string result = response.Content.ReadAsStringAsync().Result;
-            
-            if (response.IsSuccessStatusCode)
-            {
-                logger.LogInformation("Normal result: " + result);
-            }
-            else
-            {
-                logger.LogError("Error: " + result);
-            }
+            string result = httpResponse.Content.ReadAsStringAsync().Result;
 
-            response.EnsureSuccessStatusCode();
-            return result;
+            // TODO: Exception handling
+            var resultToReturn = JsonConvert.DeserializeObject<ResultDto>(result);
+            return resultToReturn;
         }
     }
 }

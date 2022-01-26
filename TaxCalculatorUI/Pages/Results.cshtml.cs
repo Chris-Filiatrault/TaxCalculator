@@ -13,37 +13,37 @@ namespace TaxCalculatorUI.Pages
     {
 
         [BindProperty(SupportsGet = true)]
-        public string TotalPackage { get; set; }
+        public double TotalPackage { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string PayFrequency { get; set; }
+        public double PayFrequency { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string Superannuation { get; set; }
+        public double Superannuation { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string TaxableIncome { get; set; }
+        public double TaxableIncome { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string DeductionTaxableIncome { get; set; }
+        public double DeductionTaxableIncome { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string MedicareLevy { get; set; }
+        public double MedicareLevy { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string BudgetRepairLevy { get; set; }
+        public double BudgetRepairLevy { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string IncomeTax { get; set; }
+        public double IncomeTax { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string Deductions { get; set; }
+        public double Deductions { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string NetIncome { get; set; }
+        public double NetIncome { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string PayPacket { get; set; }
+        public double PayPacket { get; set; }
 
         public void OnGet()
         {

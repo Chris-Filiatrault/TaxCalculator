@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TaxCalculatorApi.Functions;
 using TaxCalculatorApi.Models;
 
@@ -9,14 +6,24 @@ namespace TaxCalculatorApi.Services
 {
     public class CalculationService : ICalculationService
     {
-        public double CalculateTax(double income)
+        public CalculationResultDto CalculateTax(int totalPackage)
         {
-            // TODO: Assign values using Functions
-            CalculationResult calculationResult = new();
+            CalculationResultDto calculationResult = new();
 
-            calculationResult.TotalPackage = income;
-            return calculationResult.TotalPackage * 3;
+            calculationResult.TotalPackage = totalPackage;
+            calculationResult.Superannuation = Calculations.CalculateSuperannuation(calculationResult.TotalPackage);
+            calculationResult.TaxableIncome = Calculations.CalculateTaxableIncome(calculationResult.TotalPackage, calculationResult.Superannuation);
+            calculationResult.DeductionTaxableIncome = Math.Floor(calculationResult.TaxableIncome);
+            calculationResult.MedicareLevy = Calculations.CalculateMedicareLevy(calculationResult.DeductionTaxableIncome);
+            calculationResult.BudgetRepairLevy = Calculations.CalculateBudgetRepairLevy(calculationResult.DeductionTaxableIncome);
+            calculationResult.IncomeTax = Calculations.CalculateIncomeTax(calculationResult.DeductionTaxableIncome);
+            calculationResult.Deductions = calculationResult.MedicareLevy + calculationResult.BudgetRepairLevy + calculationResult.IncomeTax;
+            calculationResult.NetIncome = calculationResult.TotalPackage - calculationResult.Superannuation - calculationResult.Deductions;
 
+            // TODO: Handle unhandled exception after introducing calculationResult.PayFrequency
+            //calculationResult.PayPacket = Utilities.RoundUp(calculationResult.NetIncome / calculationResult.PayFrequency, 2);
+
+            return calculationResult;
         }
     }
 }

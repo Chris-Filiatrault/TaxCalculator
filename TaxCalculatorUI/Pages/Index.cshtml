@@ -14,17 +14,17 @@
 
 <form method="post">
     <br />
-    <h5>Enter a number, which the API will multiply by 3:</h5>
-    <input type="text" asp-for="ValuesObject.TotalPackage" />
+    <h5>Enter total package:</h5>
+    <input type="text" asp-for="InputFormValues.TotalPackage" />
     <br />
-    <span style="color:red" asp-validation-for="ValuesObject.TotalPackage"></span>
+    <span style="color:red" asp-validation-for="InputFormValues.TotalPackage"></span>
 
-    @*<br />
-    <h5>Enter Pay Frequency (w, f, m)</h5>
-    <input type="text" asp-for="ValuesObject.PayFrequency" />
     <br />
-    <span style="color:red" asp-validation-for="ValuesObject.PayFrequency"></span>
-    <br />*@
+    <h5>Enter Pay Frequency (w, f, m)</h5>
+    <input type="text" asp-for="InputFormValues.PayFrequency" />
+    <br />
+    <span style="color:red" asp-validation-for="InputFormValues.PayFrequency"></span>
+    <br />
 
     <br />
 

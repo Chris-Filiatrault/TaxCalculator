@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using TaxCalculatorApi.Functions;
 using TaxCalculatorApi.Models;
 using TaxCalculatorApi.Services;
 
@@ -23,9 +22,10 @@ namespace TaxCalculatorApi.Controllers
         }
 
         [HttpGet]
-        public double Get(int income)
+        public CalculationResultDto Get(int income)
         {
-            return calculationService.CalculateTax(income);
+            var result = calculationService.CalculateTax(income);
+            return result;
         }
     }
 }
