@@ -30,7 +30,9 @@ namespace TaxCalculatorUI.Clients
         {
             var baseUrl = configuration.GetSection("TaxCalculatorApiUrl").Value;
 
-            var requestString = baseUrl + $"?income={totalPackage}";
+            var endpoint = "CalculateTax";
+
+            var requestString = baseUrl + endpoint + $"?income={totalPackage}";
             
             var httpResponse = client.GetAsync(requestString).Result;
 
