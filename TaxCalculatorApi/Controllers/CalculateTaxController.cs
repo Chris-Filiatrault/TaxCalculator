@@ -22,9 +22,9 @@ namespace TaxCalculatorApi.Controllers
         }
 
         [HttpGet]
-        public CalculationResultDto Get(int income)
+        public CalculationResultDto Get(int totalPackage)
         {
-            var result = calculationService.CalculateTax(income);
+            var result = calculationService.CalculateTax(totalPackage);
             return result;
         }
     }
