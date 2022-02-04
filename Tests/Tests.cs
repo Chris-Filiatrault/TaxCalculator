@@ -1,5 +1,5 @@
 using Xunit;
-using TaxCalculatorUI;
+using TaxCalculatorApi.Functions;
 
 namespace UnitTests
 {

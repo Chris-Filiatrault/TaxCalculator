@@ -20,6 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\TaxCalculatorApi\TaxCalculatorApi.csproj" />
       <ProjectReference Include="..\TaxCalculatorUI\TaxCalculatorUI.csproj" />
     </ItemGroup>
 
