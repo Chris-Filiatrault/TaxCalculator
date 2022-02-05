@@ -4,7 +4,7 @@
 
 Both projects are live on Azure on separate resources (free tier so startup is slow on first use).
 
-- API is live [here](https://tax-calculator-api.azurewebsites.net/CalculateTax?totalPackage=100000)
+- API is live [here](https://tax-calculator-api.azurewebsites.net/CalculateTax?totalPackage=100000&payFrequency=12)
 - UI is live  [here](https://tax-calculator-ui.azurewebsites.net/)
 
 The application builds off work from a [coding assignment](https://github.com/Chris-Filiatrault/coding-assignment), the result of which produced a console application with user input for calculating tax.
