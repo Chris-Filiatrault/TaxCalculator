@@ -3,7 +3,7 @@
     public class CalculationResultDto
     {
         public double TotalPackage { get; set; }
-        public double PayFrequency { get; set; }
+        public int PayFrequency { get; set; }
         public double Superannuation { get; set; }
         public double TaxableIncome { get; set; }
         public double DeductionTaxableIncome { get; set; }
