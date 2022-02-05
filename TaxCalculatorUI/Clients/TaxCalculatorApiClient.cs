@@ -26,13 +26,13 @@ namespace TaxCalculatorUI.Clients
         }
 
         // TODO: Make API call async
-        public ResultDto CallTaxCalculatorApi(double totalPackage)
+        public ResultDto CallTaxCalculatorApi(double totalPackage, int payFrequency)
         {
             var baseUrl = configuration.GetSection("TaxCalculatorApiUrl").Value;
 
-            var endpoint = "CalculateTax";
+            var query = $"CalculateTax?totalPackage={totalPackage}&payFrequency={payFrequency}";
 
-            var requestString = baseUrl + endpoint + $"?totalPackage={totalPackage}";
+            var requestString = baseUrl + query;
             
             var httpResponse = client.GetAsync(requestString).Result;
 

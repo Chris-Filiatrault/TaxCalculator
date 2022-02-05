@@ -14,17 +14,19 @@
 
 <form method="post">
     <br />
-    <h5>Enter total package here:</h5>
-    <input type="text" asp-for="InputFormValues.TotalPackage" />
+    <h5>Enter total package:</h5>
+    <input type="text" asp-for="@Model.TotalPackage" />
     <br />
-    <span style="color:red" asp-validation-for="InputFormValues.TotalPackage"></span>
+    <span style="color:red" asp-validation-for="@Model.TotalPackage"></span>
 
     <br />
-    <h5>Enter Pay Frequency (w, f, m)</h5>
-    <input type="text" asp-for="InputFormValues.PayFrequency" />
-    <br />
-    <span style="color:red" asp-validation-for="InputFormValues.PayFrequency"></span>
-    <br />
+
+    <div class="form-group">
+    <h5>Select Pay Frequency:</h5>
+    <select asp-for="@Model.PayFrequency"
+            asp-items="Model.PayFrequencyOptions">
+    </select>
+    </div>
 
     <br />
 

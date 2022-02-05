@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 using TaxCalculatorUI.Clients;
 using TaxCalculatorUI.Models;
 
@@ -8,9 +10,18 @@ namespace TaxCalculatorUI.Pages
 {
     public class IndexModel : PageModel
     {
-        // Can use properties of this object when submitting the form to collect data
         [BindProperty]
-        public InputFormValues InputFormValues { get; set; }
+        public double TotalPackage { get; set; }
+
+        [BindProperty]
+        public int PayFrequency { get; set; }
+
+        public List<SelectListItem> PayFrequencyOptions = new List<SelectListItem>
+        {
+            new SelectListItem {Text = "Weekly", Value = "52"},
+            new SelectListItem {Text = "Fortnightly", Value = "26"},
+            new SelectListItem {Text = "Monthly", Value = "12"}
+        };
 
         public void OnGet()
         {
@@ -24,9 +35,9 @@ namespace TaxCalculatorUI.Pages
             }
             else
             {
-                var results = client.CallTaxCalculatorApi(InputFormValues.TotalPackage);
+                // Todo: make controller and call client from there
+                var results = client.CallTaxCalculatorApi(TotalPackage, PayFrequency);
 
-                // Redirect to results page and pass in values in anonymous object 
                 return RedirectToPage("/Results", results);
             }
         }
