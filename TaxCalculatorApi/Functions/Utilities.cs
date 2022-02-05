@@ -4,9 +4,6 @@ using System.Globalization;
 
 namespace TaxCalculatorApi.Functions
 {
-    /// <summary>
-    /// This class contains miscellaneous methods not relating to a specific class.
-    /// </summary>
     public class Utilities
     {
         public static double RoundUp(double input, int places)
@@ -25,40 +22,6 @@ namespace TaxCalculatorApi.Functions
             {
                 return input;
             }
-        }
-
-        public static int PayFrequencyCharToInt(char userInput)
-        {
-            int payFrequency = 12;
-            bool isValid = false;
-            char[] validPayFrequencies = { 'w', 'W', 'f', 'F', 'm', 'M' };
-            while (!isValid)
-            {
-                if (validPayFrequencies.Contains(userInput))
-                {
-                    char payFrequencyUpper = Char.ToUpper(userInput);
-                    if (payFrequencyUpper == 'W')
-                    {
-                        payFrequency = 52;
-                        isValid = true;
-                    }
-                    else if (payFrequencyUpper == 'F')
-                    {
-                        payFrequency = 26;
-                        isValid = true;
-                    }
-                    else
-                    {
-                        payFrequency = 12;
-                        isValid = true;
-                    }
-                }
-                else
-                {
-                    // TODO - error handling
-                }
-            }
-            return payFrequency;
         }
 
         public static string ConvertToCurrency(double amount)
