@@ -72,7 +72,7 @@ namespace TaxCalculatorApi.Functions
             }
             else
             {
-                return 54000 + (deductionTaxableIncome - tier4) * 0.47;
+                return Math.Ceiling(54000 + (deductionTaxableIncome - tier4) * 0.47);
             }
         }
     }
