@@ -8,27 +8,20 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Tax Calculator</h1>
+    <h1 class="display-4 mb-3">Tax Calculator</h1>
 </div>
 
+<br />
 
 <form method="post">
-    <br />
-    <h5>Enter total package (Taxable Income + Superannuation):</h5>
-    <input type="text" asp-for="@Model.TotalPackage">
-    <br />
-    <span style="color:red" asp-validation-for="@Model.TotalPackage"></span>
-
-    <br />
-
-    <div class="form-group">
-    <h5>Select Pay Frequency:</h5>
-    <select asp-for="@Model.PayFrequency"
-            asp-items="Model.PayFrequencyOptions">
-    </select>
+    <div class="mt-4 form-text">
+        <h5>Enter total package (Taxable Income + Superannuation):</h5>
+            <span class="ml-n2">$</span><input type="text" asp-for="@Model.TotalPackage"/>
+        <span style="color:red" asp-validation-for="@Model.TotalPackage"></span>
     </div>
-
-    <br />
-
-    <button type="submit">Calculate</button>
+    <div class="form-group mt-4">
+        <h5>Select Pay Frequency:</h5>
+        <select class="dropdown" asp-for="@Model.PayFrequency" asp-items="Model.PayFrequencyOptions"></select>
+    </div>
+    <button type="submit" class="mt-4 btn btn-primary">Calculate</button>
 </form>

@@ -36,11 +36,12 @@ namespace TaxCalculatorUI.Clients
             
             var httpResponse = client.GetAsync(requestString).Result;
 
-            string result = httpResponse.Content.ReadAsStringAsync().Result;
+            string httpResponseStr = httpResponse.Content.ReadAsStringAsync().Result;
 
             // TODO: Exception handling
-            var resultToReturn = JsonConvert.DeserializeObject<ResultDto>(result);
-            return resultToReturn;
+            var result = JsonConvert.DeserializeObject<ResultDto>(httpResponseStr);
+
+            return result;
         }
     }
 }

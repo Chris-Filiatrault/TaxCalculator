@@ -16,7 +16,7 @@ namespace TaxCalculatorUI.Pages
         [BindProperty]
         public int PayFrequency { get; set; }
 
-        public List<SelectListItem> PayFrequencyOptions = new List<SelectListItem>
+        public List<SelectListItem> PayFrequencyOptions = new()
         {
             new SelectListItem {Text = "Weekly", Value = "52"},
             new SelectListItem {Text = "Fortnightly", Value = "26"},
