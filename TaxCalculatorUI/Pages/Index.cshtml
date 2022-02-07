@@ -16,7 +16,8 @@
 <form method="post">
     <div class="mt-4 form-text">
         <h5>Enter total package (Taxable Income + Superannuation):</h5>
-            <span class="ml-n2">$</span><input type="text" asp-for="@Model.TotalPackage"/>
+        <span class="ml-n2">@Model.CurrencySymbol</span>
+        <input type="text" asp-for="@Model.TotalPackage" />
         <span style="color:red" asp-validation-for="@Model.TotalPackage"></span>
     </div>
     <div class="form-group mt-4">

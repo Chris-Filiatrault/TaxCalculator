@@ -8,6 +8,8 @@ using TaxCalculatorUI.Models;
 
 namespace TaxCalculatorUI.Pages
 {
+    using System.Globalization;
+
     public class IndexModel : PageModel
     {
         [BindProperty]
@@ -22,6 +24,8 @@ namespace TaxCalculatorUI.Pages
             new SelectListItem {Text = "Fortnightly", Value = "26"},
             new SelectListItem {Text = "Monthly", Value = "12"}
         };
+
+        public string CurrencySymbol { get; set; } = CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol;
 
         public void OnGet()
         {
