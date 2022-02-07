@@ -5,33 +5,34 @@
 
 <br />
 <h3>Results</h3>
-<table style="width:35%">
+<table>
     <tr>
-        <td class="mx-3">Pay Packet</td>
-        <td>@Model.PayPacket</td>
+        <td >Pay Packet</td>
+        <partial name="Partials/_ResultValuePartial" model="@Model.PayPacket" />
     </tr>
     <tr>
         <td>Superannuation</td>
-        <td>@Model.Superannuation</td>
+        <partial name="Partials/_ResultValuePartial" model="@Model.Superannuation" />
     </tr>
     <tr>
         <td>Taxable Income</td>
-        <td>@Model.TaxableIncome</td>
+        <partial name="Partials/_ResultValuePartial" model="@Model.TaxableIncome" />
     </tr>
     <tr>
         <td>Net Income</td>
-        <td>@Model.NetIncome</td>
+        <partial name="Partials/_ResultValuePartial" model="@Model.NetIncome" />
     </tr>
     <tr>
         <td>Medicare Levy</td>
-        <td>@Model.MedicareLevy</td>
+        <partial name="Partials/_ResultValuePartial" model="@Model.MedicareLevy" />
     </tr>
     <tr>
         <td>Budget Repair Levy</td>
-        <td>@Model.BudgetRepairLevy</td>
+        <partial name="Partials/_ResultValuePartial" model="@Model.BudgetRepairLevy" />
     </tr>
     <tr>
         <td>Income Tax</td>
-        <td>@Model.IncomeTax</td>
+        <partial name="Partials/_ResultValuePartial" model="@Model.IncomeTax" />
     </tr>
 </table>
+
