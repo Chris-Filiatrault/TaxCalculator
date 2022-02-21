@@ -25,7 +25,7 @@ namespace TaxCalculatorUI.Clients
             this.logger = logger;
         }
 
-        // TODO: Make API call async
+        // TODO: Make API call async.
         public ResultDto CallTaxCalculatorApi(double totalPackage, int payFrequency)
         {
             var baseUrl = configuration.GetSection("TaxCalculatorApiUrl").Value;
