@@ -37,7 +37,7 @@
 
         public void OnGet()
         {
-            Trace.TraceError("Test: Log from ");
+            Trace.TraceError("Test: Log from Tracer");
             Logger.LogInformation("Test: log from ILogger");
         }
 
