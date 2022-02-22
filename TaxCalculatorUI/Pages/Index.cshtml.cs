@@ -1,17 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
-using TaxCalculatorUI.Clients;
-using TaxCalculatorUI.Models;
+﻿namespace TaxCalculatorUI.Pages {
 
-
-namespace TaxCalculatorUI.Pages
-{
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.Extensions.Logging;
+    
+    using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Globalization;
+    
+    using TaxCalculatorUI.Clients;
 
     public class IndexModel : PageModel
     {
+        private readonly ILogger Logger;
+
+        public IndexModel(ILogger<IndexModel> logger)
+        {
+            Logger = logger;
+        }
+
         [BindProperty]
         public double TotalPackage { get; set; }
 
@@ -29,6 +37,8 @@ namespace TaxCalculatorUI.Pages
 
         public void OnGet()
         {
+            Trace.TraceError("Test: Log from ");
+            Logger.LogInformation("Test: log from ILogger");
         }
 
         public IActionResult OnPost([FromServices] TaxCalculatorApiClient client)
