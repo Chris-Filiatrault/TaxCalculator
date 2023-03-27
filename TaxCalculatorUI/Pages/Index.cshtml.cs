@@ -3,22 +3,14 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.Extensions.Logging;
-    
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Globalization;
     
-    using TaxCalculatorUI.Clients;
+    using TaxCalculatorUI.Services;
 
     public class IndexModel : PageModel
     {
-        private readonly ILogger Logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            Logger = logger;
-        }
+        private readonly TaxCalculatorService taxCalculatorService;
 
         [BindProperty]
         public double TotalPackage { get; set; }
@@ -35,13 +27,16 @@
 
         public string CurrencySymbol { get; set; } = CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol;
 
-        public void OnGet()
+        public IndexModel(TaxCalculatorService taxCalculatorService)
         {
-            Trace.TraceError("Test: Log from Tracer");
-            Logger.LogInformation("Test: log from ILogger");
+            this.taxCalculatorService = taxCalculatorService;
         }
 
-        public IActionResult OnPost([FromServices] TaxCalculatorApiClient client)
+        public void OnGet()
+        {
+        }
+
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
@@ -49,8 +44,7 @@
             }
             else
             {
-                // Todo: make controller and call client from there
-                var results = client.CallTaxCalculatorApi(TotalPackage, PayFrequency);
+                var results = taxCalculatorService.CalculateTax(TotalPackage, PayFrequency);
 
                 return RedirectToPage("/Results", results);
             }
