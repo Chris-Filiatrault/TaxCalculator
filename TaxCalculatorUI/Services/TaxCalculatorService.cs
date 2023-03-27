@@ -1,4 +1,4 @@
-﻿namespace TaxCalculatorUI.Services
+﻿    namespace TaxCalculatorUI.Services
 {
     using System.Net.Http;
     using Microsoft.Extensions.Configuration;
@@ -27,7 +27,7 @@
 
         public async Task<ResultModel> CalculateTax(double totalPackage, int payFrequency)
         {
-            var baseUrl = configuration.GetSection("TaxCalculatorApiUrl").Value;
+            var baseUrl = configuration.GetValue<string>("TaxCalculatorApiUrl");
             var query = $"CalculateTax?totalPackage={totalPackage}&payFrequency={payFrequency}";
             var requestString = baseUrl + query;
 
