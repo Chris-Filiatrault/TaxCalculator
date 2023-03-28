@@ -7,37 +7,37 @@ namespace TaxCalculatorUI.Pages
     {
 
         [BindProperty(SupportsGet = true)]
-        public double TotalPackage { get; set; }
+        public decimal TotalPackage { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public double PayFrequency { get; set; }
+        public decimal PayFrequency { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public double Superannuation { get; set; }
+        public decimal Superannuation { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public double TaxableIncome { get; set; }
+        public decimal TaxableIncome { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public double DeductionTaxableIncome { get; set; }
+        public decimal DeductionTaxableIncome { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public double MedicareLevy { get; set; }
+        public decimal MedicareLevy { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public double BudgetRepairLevy { get; set; }
+        public decimal BudgetRepairLevy { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public double IncomeTax { get; set; }
+        public decimal IncomeTax { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public double Deductions { get; set; }
+        public decimal Deductions { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public double NetIncome { get; set; }
+        public decimal NetIncome { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public double PayPacket { get; set; }
+        public decimal PayPacket { get; set; }
 
         public void OnGet()
         {

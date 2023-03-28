@@ -22,7 +22,7 @@
         }
 
         [HttpGet]
-        public CalculationResultDto Get(double totalPackage, int payFrequency)
+        public CalculationResultDto Get(decimal totalPackage, int payFrequency)
         {
             var result = calculationService.CalculateTax(totalPackage, payFrequency);
             return result;

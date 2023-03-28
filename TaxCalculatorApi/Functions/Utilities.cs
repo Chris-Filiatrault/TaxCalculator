@@ -5,25 +5,22 @@ namespace TaxCalculatorApi.Functions
 
     public class Utilities
     {
-        public static double RoundUp(double input, int places)
+        public static decimal RoundUp(decimal input, int places)
         {
-            double multiplier = Math.Pow(10, Convert.ToDouble(places));
-            return Math.Ceiling(input * multiplier) / multiplier;
+            return decimal.Round(input, places, MidpointRounding.ToPositiveInfinity);
         }        
         
         public static string RemoveDollarSymbol(string input)
         {
-            if (!string.IsNullOrEmpty(input))
-            {
-                return input.StartsWith('$') ? input.TrimStart('$') : input;    
-            }
-            else
+            if (string.IsNullOrEmpty(input))
             {
                 return input;
             }
+            
+            return input.StartsWith('$') ? input.TrimStart('$') : input;    
         }
 
-        public static string ConvertToCurrency(double amount)
+        public static string ConvertToCurrency(decimal amount)
         {
             return amount.ToString("C", CultureInfo.CurrentCulture);
         }

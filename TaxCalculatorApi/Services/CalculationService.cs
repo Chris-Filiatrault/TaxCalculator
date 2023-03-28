@@ -1,36 +1,103 @@
 ﻿namespace TaxCalculatorApi.Services
 {
     using System;
-    using TaxCalculatorApi.Functions;
     using TaxCalculatorApi.Models;
 
     public class CalculationService : ICalculationService
     {
-        public CalculationResultDto CalculateTax(double totalPackage, int payFrequency)
+        public static decimal CalculateSuperannuation(decimal totalPackage)
         {
-            CalculationResultDto calculationResult = new();
+            return decimal.Round(totalPackage - totalPackage / (decimal)1.095, 2, MidpointRounding.ToPositiveInfinity);
+        }
 
-            calculationResult.TotalPackage = totalPackage;
+        public static decimal CalculateTaxableIncome(decimal totalPackage, decimal superannuation)
+        {
+            return Math.Round(totalPackage - superannuation, 2);
+        }
+
+        public static decimal CalculateMedicareLevy(decimal deductionTaxableIncome, int tier1 = 21335, int tier2 = 26668)
+        {
+            if (deductionTaxableIncome <= tier1)
+            {
+                return 0;
+            }
+            else if (deductionTaxableIncome >= (tier1 + 1) & deductionTaxableIncome <= tier2)
+            {
+                return Math.Ceiling((deductionTaxableIncome - tier1) * (decimal)0.1);
+            }
+            else
+            {
+                return Math.Ceiling(deductionTaxableIncome * (decimal)0.02);
+            }
+        }
+
+        public static decimal CalculateBudgetRepairLevy(decimal deductionTaxableIncome, int tier1 = 180000)
+        {
+            if (deductionTaxableIncome <= tier1)
+            {
+                return 0;
+            }
+            else
+            {
+                return Math.Ceiling((deductionTaxableIncome - tier1) * (decimal)0.02);
+            }
+        }
+
+        public static decimal CalculateIncomeTax(
+            decimal deductionTaxableIncome,
+            int tier1 = 18200,
+            int tier2 = 37000,
+            int tier3 = 87000,
+            int tier4 = 180000
+        )
+        {
+            if (deductionTaxableIncome <= tier1)
+            {
+                return 0;
+            }
+            else if (deductionTaxableIncome >= (tier1 + 1) & deductionTaxableIncome <= tier2)
+            {
+                return Math.Ceiling((deductionTaxableIncome - tier1) * (decimal)0.19);
+            }
+            else if (deductionTaxableIncome >= (tier2 + 1) & deductionTaxableIncome <= tier3)
+            {
+                return 3572 + Math.Ceiling((deductionTaxableIncome - tier2) * (decimal)0.325);
+            }
+            else if (deductionTaxableIncome >= tier3 & deductionTaxableIncome <= tier4)
+            {
+                return 19822 + Math.Ceiling((deductionTaxableIncome - tier3) * (decimal)0.37);
+            }
+            else
+            {
+                return Math.Ceiling(54000 + ((deductionTaxableIncome - tier4) * (decimal)0.47));
+            }
+        }
+
+        public CalculationResultDto CalculateTax(decimal totalPackage, int payFrequency)
+        {
+            CalculationResultDto calculationResult = new()
+            {
+                TotalPackage = totalPackage,
+                PayFrequency = payFrequency
+            };
+
+            calculationResult.Superannuation = CalculateSuperannuation(calculationResult.TotalPackage);
             
-            calculationResult.PayFrequency = payFrequency;
-            
-            calculationResult.Superannuation = Calculations.CalculateSuperannuation(calculationResult.TotalPackage);
-            
-            calculationResult.TaxableIncome = Calculations.CalculateTaxableIncome(calculationResult.TotalPackage, calculationResult.Superannuation);
+            calculationResult.TaxableIncome = CalculateTaxableIncome(calculationResult.TotalPackage, calculationResult.Superannuation);
             
             calculationResult.DeductionTaxableIncome = Math.Floor(calculationResult.TaxableIncome);
             
-            calculationResult.MedicareLevy = Calculations.CalculateMedicareLevy(calculationResult.DeductionTaxableIncome);
+            calculationResult.MedicareLevy = CalculateMedicareLevy(calculationResult.DeductionTaxableIncome);
             
-            calculationResult.BudgetRepairLevy = Calculations.CalculateBudgetRepairLevy(calculationResult.DeductionTaxableIncome);
+            calculationResult.BudgetRepairLevy = CalculateBudgetRepairLevy(calculationResult.DeductionTaxableIncome);
             
-            calculationResult.IncomeTax = Calculations.CalculateIncomeTax(calculationResult.DeductionTaxableIncome);
+            calculationResult.IncomeTax = CalculateIncomeTax(calculationResult.DeductionTaxableIncome);
             
             calculationResult.Deductions = calculationResult.MedicareLevy + calculationResult.BudgetRepairLevy + calculationResult.IncomeTax;
-            
-            calculationResult.NetIncome = Utilities.RoundUp(calculationResult.TotalPackage - calculationResult.Superannuation - calculationResult.Deductions, 2);
-            
-            calculationResult.PayPacket = Utilities.RoundUp(calculationResult.NetIncome / calculationResult.PayFrequency, 2);
+
+            calculationResult.NetIncome = decimal.Round(calculationResult.TotalPackage - calculationResult.Superannuation - calculationResult.Deductions, 2, MidpointRounding.ToPositiveInfinity);
+
+            calculationResult.PayPacket = decimal.Round(calculationResult.NetIncome / calculationResult.PayFrequency, 2, MidpointRounding.ToPositiveInfinity);
 
             return calculationResult;
         }

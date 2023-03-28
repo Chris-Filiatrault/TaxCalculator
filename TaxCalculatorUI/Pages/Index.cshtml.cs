@@ -13,7 +13,7 @@
         private readonly TaxCalculatorService taxCalculatorService;
 
         [BindProperty]
-        public double TotalPackage { get; set; }
+        public decimal TotalPackage { get; set; }
 
         [BindProperty]
         public int PayFrequency { get; set; }

@@ -4,6 +4,6 @@
 
     public interface ICalculationService
     {
-        CalculationResultDto CalculateTax(double totalPackage, int payFrequency);
+        CalculationResultDto CalculateTax(decimal totalPackage, int payFrequency);
     }
 }

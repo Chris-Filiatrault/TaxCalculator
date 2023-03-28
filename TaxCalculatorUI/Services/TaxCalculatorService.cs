@@ -25,7 +25,7 @@
   
         }
 
-        public async Task<ResultModel> CalculateTax(double totalPackage, int payFrequency)
+        public async Task<ResultModel> CalculateTax(decimal totalPackage, int payFrequency)
         {
             var baseUrl = configuration.GetValue<string>("TaxCalculatorApiUrl");
             var query = $"CalculateTax?totalPackage={totalPackage}&payFrequency={payFrequency}";
