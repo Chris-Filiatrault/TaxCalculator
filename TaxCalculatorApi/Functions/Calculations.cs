@@ -1,7 +1,7 @@
-using System;
-
 namespace TaxCalculatorApi.Functions
 {
+    using System;
+
     /// <summary>
     /// This class handles the calculations for superannuation, taxable income, medicare levy, budget repair levy and income tax
     /// </summary>

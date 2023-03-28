@@ -36,7 +36,6 @@
             {
                 var httpResponse = await client.GetAsync(requestString);
                 responseContent = await httpResponse.Content.ReadAsStringAsync();
-
             }
             catch (Exception exception)
             {

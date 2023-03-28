@@ -1,9 +1,9 @@
-﻿using System;
-using TaxCalculatorApi.Functions;
-using TaxCalculatorApi.Models;
-
-namespace TaxCalculatorApi.Services
+﻿namespace TaxCalculatorApi.Services
 {
+    using System;
+    using TaxCalculatorApi.Functions;
+    using TaxCalculatorApi.Models;
+
     public class CalculationService : ICalculationService
     {
         public CalculationResultDto CalculateTax(double totalPackage, int payFrequency)

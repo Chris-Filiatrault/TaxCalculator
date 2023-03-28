@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using TaxCalculatorApi.Models;
-using TaxCalculatorApi.Services;
-
-namespace TaxCalculatorApi.Controllers
+﻿namespace TaxCalculatorApi.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using TaxCalculatorApi.Models;
+    using TaxCalculatorApi.Services;
+
     [ApiController]
     [Route("[controller]")]
     public class CalculateTaxController : Controller

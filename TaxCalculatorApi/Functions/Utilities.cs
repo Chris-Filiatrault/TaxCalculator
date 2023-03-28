@@ -1,9 +1,8 @@
-using System;
-using System.Linq;
-using System.Globalization;
-
 namespace TaxCalculatorApi.Functions
 {
+    using System;
+    using System.Globalization;
+
     public class Utilities
     {
         public static double RoundUp(double input, int places)
