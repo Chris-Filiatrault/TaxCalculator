@@ -26,8 +26,8 @@ namespace TaxCalculatorApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaxCalculatorApi", Version = "v1" });
             });
-            services.AddScoped<ICalculationService, CalculationService>();
 
+            services.AddScoped<ICalculationService, CalculationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
