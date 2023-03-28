@@ -8,7 +8,7 @@
     using System;
     using System.Threading.Tasks;
 
-    public class TaxCalculatorService
+    public class TaxCalculatorService : ITaxCalculatorService
     {
         private readonly HttpClient client;
         private readonly IConfiguration configuration;
@@ -22,7 +22,7 @@
             this.configuration = configuration;
             this.log = log;
             this.client = client;
-  
+
         }
 
         public async Task<ResultModel> CalculateTax(decimal totalPackage, int payFrequency)

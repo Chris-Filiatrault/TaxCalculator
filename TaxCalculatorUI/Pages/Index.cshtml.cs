@@ -10,7 +10,7 @@
 
     public class IndexModel : PageModel
     {
-        private readonly TaxCalculatorService taxCalculatorService;
+        private readonly ITaxCalculatorService taxCalculatorService;
 
         [BindProperty]
         public decimal TotalPackage { get; set; }
@@ -27,7 +27,7 @@
 
         public string CurrencySymbol { get; set; } = CultureInfo.CurrentCulture.NumberFormat.CurrencySymbol;
 
-        public IndexModel(TaxCalculatorService taxCalculatorService)
+        public IndexModel(ITaxCalculatorService taxCalculatorService)
         {
             this.taxCalculatorService = taxCalculatorService;
         }
