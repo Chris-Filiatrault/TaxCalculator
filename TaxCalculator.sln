@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.Web.Tests", "TaxCalculator.Web.Tests\TaxCalculator.Web.Tests.csproj", "{DCC7CBD8-6C14-4276-B9A9-F07BE9330F88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.API.Tests", "TaxCalculator.API.Tests\TaxCalculator.API.Tests.csproj", "{28D12EDC-F215-4EDF-9CAD-3C18CC981289}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +32,14 @@ Global
 		{447C43E3-4114-45C6-A115-BB8BFF3D28B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{447C43E3-4114-45C6-A115-BB8BFF3D28B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{447C43E3-4114-45C6-A115-BB8BFF3D28B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCC7CBD8-6C14-4276-B9A9-F07BE9330F88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC7CBD8-6C14-4276-B9A9-F07BE9330F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCC7CBD8-6C14-4276-B9A9-F07BE9330F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC7CBD8-6C14-4276-B9A9-F07BE9330F88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28D12EDC-F215-4EDF-9CAD-3C18CC981289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28D12EDC-F215-4EDF-9CAD-3C18CC981289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28D12EDC-F215-4EDF-9CAD-3C18CC981289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28D12EDC-F215-4EDF-9CAD-3C18CC981289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
