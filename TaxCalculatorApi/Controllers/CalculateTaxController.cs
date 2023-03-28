@@ -9,18 +9,19 @@
     [Route("[controller]")]
     public class CalculateTaxController : Controller
     {
-        private readonly ILogger<CalculateTaxController> logger;
+        private readonly ILogger<CalculateTaxController> log;
         private readonly ICalculationService calculationService;
 
-        public CalculateTaxController(ILogger<CalculateTaxController> logger, ICalculationService calculationService)
+        public CalculateTaxController(ILogger<CalculateTaxController> log, ICalculationService calculationService)
         {
-            this.logger = logger;
+            this.log = log;
             this.calculationService = calculationService;
         }
 
         [HttpGet]
         public CalculationResultDto Get(decimal totalPackage, int payFrequency)
         {
+            log.LogInformation("Calling Calculation Service with totalPackage {TotalPackage} and payFrequency {PayFrequency}", totalPackage, payFrequency);
             var result = calculationService.CalculateTax(totalPackage, payFrequency);
             return result;
         }
