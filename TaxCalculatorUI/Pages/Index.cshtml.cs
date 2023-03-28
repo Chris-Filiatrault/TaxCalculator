@@ -18,7 +18,7 @@
         [BindProperty]
         public int PayFrequency { get; set; }
 
-        public List<SelectListItem> PayFrequencyOptions = new()
+        public List<SelectListItem> PayFrequencyOptions { get; set; } = new()
         {
             new SelectListItem {Text = "Weekly", Value = "52"},
             new SelectListItem {Text = "Fortnightly", Value = "26"},
