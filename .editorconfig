@@ -347,6 +347,9 @@ dotnet_diagnostic.CA2237.severity = warning
 # IDE0003: Redundant 'this' prefix
 dotnet_diagnostic.IDE0003.severity = warning
 
+# IDE0046: Convert to conditional expression
+dotnet_diagnostic.IDE0046.severity = none
+
 #########################################
 # MANDATORY EXCLUSIONS FOR ALL PROJECTS #
 #########################################
