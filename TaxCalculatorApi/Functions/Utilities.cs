@@ -13,7 +13,7 @@ namespace TaxCalculatorApi.Functions
         
         public static string RemoveDollarSymbol(string input)
         {
-            if (input != "")
+            if (!string.IsNullOrEmpty(input))
             {
                 return input.StartsWith('$') ? input.TrimStart('$') : input;    
             }
