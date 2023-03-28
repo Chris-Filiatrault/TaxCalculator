@@ -31,19 +31,18 @@
             var query = $"CalculateTax?totalPackage={totalPackage}&payFrequency={payFrequency}";
             var requestString = baseUrl + query;
 
-            string responseContent;
+            ResultModel result;
             try
             {
                 var httpResponse = await client.GetAsync(requestString);
-                responseContent = await httpResponse.Content.ReadAsStringAsync();
+                var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                result = JsonConvert.DeserializeObject<ResultModel>(responseContent);
             }
             catch (Exception exception)
             {
                 log.LogInformation(exception, "Failed to call Tax Calculator API with query {Query}", query);
                 throw;
             }
-
-            var result = JsonConvert.DeserializeObject<ResultModel>(responseContent);
 
             return result;
         }

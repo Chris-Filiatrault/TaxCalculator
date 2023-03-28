@@ -5,7 +5,7 @@
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System.Collections.Generic;
     using System.Globalization;
-    
+    using System.Threading.Tasks;
     using TaxCalculatorUI.Services;
 
     public class IndexModel : PageModel
@@ -36,7 +36,7 @@
         {
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
             if (!ModelState.IsValid)
             {
@@ -44,7 +44,7 @@
             }
             else
             {
-                var results = taxCalculatorService.CalculateTax(TotalPackage, PayFrequency);
+                var results = await taxCalculatorService.CalculateTax(TotalPackage, PayFrequency);
 
                 return RedirectToPage("/Results", results);
             }
