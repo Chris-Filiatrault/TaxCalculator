@@ -21,9 +21,8 @@ namespace TaxCalculatorUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddScoped<ITaxCalculatorService, TaxCalculatorService>();
             services.AddTransient<TaxCalculatorServiceHttpHandler>();
-            services.AddHttpClient<TaxCalculatorService>()
+            services.AddHttpClient<ITaxCalculatorService, TaxCalculatorService>()
                 .AddHttpMessageHandler<TaxCalculatorServiceHttpHandler>();
         }
 
