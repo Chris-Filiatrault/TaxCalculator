@@ -5,17 +5,17 @@
 
     public class CalculationService : ICalculationService
     {
-        public static decimal CalculateSuperannuation(decimal totalPackage)
+        public decimal CalculateSuperannuation(decimal totalPackage)
         {
-            return decimal.Round(totalPackage - (totalPackage / (decimal)1.095), 2, MidpointRounding.ToPositiveInfinity);
+            return decimal.Round(totalPackage - totalPackage / (decimal)1.095, 2, MidpointRounding.ToPositiveInfinity);
         }
 
-        public static decimal CalculateTaxableIncome(decimal totalPackage, decimal superannuation)
+        public decimal CalculateTaxableIncome(decimal totalPackage, decimal superannuation)
         {
             return Math.Round(totalPackage - superannuation, 2);
         }
 
-        public static decimal CalculateMedicareLevy(decimal deductionTaxableIncome, int tier1 = 21335, int tier2 = 26668)
+        public decimal CalculateMedicareLevy(decimal deductionTaxableIncome, int tier1 = 21335, int tier2 = 26668)
         {
             if (deductionTaxableIncome <= tier1)
             {
@@ -31,7 +31,7 @@
             }
         }
 
-        public static decimal CalculateBudgetRepairLevy(decimal deductionTaxableIncome, int tier1 = 180000)
+        public decimal CalculateBudgetRepairLevy(decimal deductionTaxableIncome, int tier1 = 180000)
         {
             if (deductionTaxableIncome <= tier1)
             {
@@ -43,7 +43,7 @@
             }
         }
 
-        public static decimal CalculateIncomeTax(
+        public decimal CalculateIncomeTax(
             decimal deductionTaxableIncome,
             int tier1 = 18200,
             int tier2 = 37000,
