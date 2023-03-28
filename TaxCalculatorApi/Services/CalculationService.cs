@@ -7,7 +7,7 @@
     {
         public static decimal CalculateSuperannuation(decimal totalPackage)
         {
-            return decimal.Round(totalPackage - totalPackage / (decimal)1.095, 2, MidpointRounding.ToPositiveInfinity);
+            return decimal.Round(totalPackage - (totalPackage / (decimal)1.095), 2, MidpointRounding.ToPositiveInfinity);
         }
 
         public static decimal CalculateTaxableIncome(decimal totalPackage, decimal superannuation)
