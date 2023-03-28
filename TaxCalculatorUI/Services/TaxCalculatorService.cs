@@ -12,12 +12,12 @@
     {
         private readonly HttpClient client;
         private readonly IConfiguration configuration;
-        private readonly ILogger<TaxCalculatorService> log;
+        private readonly ILogger<ITaxCalculatorService> log;
 
         public TaxCalculatorService(
             HttpClient client,
             IConfiguration configuration,
-            ILogger<TaxCalculatorService> log)
+            ILogger<ITaxCalculatorService> log)
         {
             this.configuration = configuration;
             this.log = log;
